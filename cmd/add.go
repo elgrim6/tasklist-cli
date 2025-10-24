@@ -22,7 +22,7 @@ var addCmd = &cobra.Command{
 		tl, err := methods.LoadTasks()
 
 		if err != nil {
-			return
+			fmt.Println("Error loading tasks:", err)
 		}
 
 		id := 1

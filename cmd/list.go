@@ -16,7 +16,6 @@ var listCmd = &cobra.Command{
 		tl, err := methods.LoadTasks()
 		if err != nil {
 			fmt.Println("Error loading tasks:", err)
-			return
 		}
 		if len(tl.Tasks) == 0 {
 			fmt.Println("No tasks found.")
