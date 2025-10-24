@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	const tasksFile = "tasks.json"
 	cmd.Execute()
 }
