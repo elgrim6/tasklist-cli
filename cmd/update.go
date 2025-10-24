@@ -10,11 +10,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var doneCmd = &cobra.Command{
-	Use:   "done [task ID]",
-	Short: "Mark a task as done",
-	Long:  `Mark a specific task in your task list as completed using its ID.`,
-	Args:  cobra.ExactArgs(1),
+var updateCmd = &cobra.Command{
+	Use:   "update [task ID] [new description]",
+	Short: "Update description of a task",
+	Long:  `Update the description of a specific task in your task list using its ID.`,
+	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
 		tl, err := methods.LoadTasks()
 		if err != nil {
@@ -29,10 +29,10 @@ var doneCmd = &cobra.Command{
 
 		for i := range tl.Tasks {
 			if tl.Tasks[i].ID == id {
-				tl.Tasks[i].Completed = true
+				tl.Tasks[i].Description = args[1]
 				tl.Tasks[i].UpdatedAt = time.Now()
 				found = true
-				fmt.Printf("Task %d marked as done\n", id)
+				fmt.Printf("Task %d updated\n", id)
 				break
 			}
 		}
@@ -45,5 +45,5 @@ var doneCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(doneCmd)
+	rootCmd.AddCommand(updateCmd)
 }
