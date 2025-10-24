@@ -44,9 +44,8 @@ var addCmd = &cobra.Command{
 }
 
 func init() {
-	// Add the 'hello' command to the root command
 	rootCmd.AddCommand(addCmd)
 
-	// Define a flag for this command
+	// Define flags for this command
 	addCmd.Flags().StringVarP(&desc, "add", "a", "New Task", "Description of the task to add")
 }
